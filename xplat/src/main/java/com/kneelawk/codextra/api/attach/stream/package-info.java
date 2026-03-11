@@ -31,12 +31,7 @@
  * Usually it is easier to call methods on {@link com.kneelawk.codextra.api.attach.AttachmentKey} rather than using
  * these codecs directly.
  */
-@FieldsAreNonnullByDefault
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
+@NullMarked
 package com.kneelawk.codextra.api.attach.stream;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-import net.minecraft.FieldsAreNonnullByDefault;
-import net.minecraft.MethodsReturnNonnullByDefault;
+import org.jspecify.annotations.NullMarked;

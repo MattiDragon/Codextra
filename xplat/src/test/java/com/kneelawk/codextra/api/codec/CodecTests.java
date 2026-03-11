@@ -3,6 +3,8 @@ package com.kneelawk.codextra.api.codec;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+import com.mojang.serialization.MapCodec;
+
 import org.junit.jupiter.api.Test;
 
 import com.mojang.serialization.Codec;
@@ -17,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CodecTests {
     @Test
     void unitHandlingMapCodec() {
-        Codec<String> codec = Codextra.unitHandlingFieldOf("test", Codec.unit("Hello World")).codec();
+        Codec<String> codec = Codextra.unitHandlingFieldOf("test", MapCodec.unit("Hello World").codec()).codec();
         String input = """
             {
             }
@@ -30,7 +32,7 @@ public class CodecTests {
 
     @Test
     void unitHandlingMapCodecEncoding() {
-        Codec<String> codec = Codextra.unitHandlingFieldOf("test", Codec.unit("Hello World")).codec();
+        Codec<String> codec = Codextra.unitHandlingFieldOf("test", MapCodec.unit("Hello World").codec()).codec();
         DataResult<JsonElement> res = codec.encodeStart(JsonOps.INSTANCE, "Hello World");
         assertTrue(res.isSuccess());
         assertEquals("{}", res.getOrThrow().toString());

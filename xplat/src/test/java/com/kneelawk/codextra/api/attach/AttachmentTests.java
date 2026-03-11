@@ -13,7 +13,7 @@ import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import com.kneelawk.codextra.impl.CodextraConstants;
 
@@ -58,12 +58,12 @@ public class AttachmentTests {
         System.out.println("Result: " + result);
     }
 
-    private static final AttachmentKey<Map<ResourceLocation, DispatchTest>> DISPATCH_ATTACHMENT =
+    private static final AttachmentKey<Map<Identifier, DispatchTest>> DISPATCH_ATTACHMENT =
         AttachmentKey.ofStaticFieldName();
 
-    private record DispatchTest(String str, ResourceLocation name) {
+    private record DispatchTest(String str, Identifier name) {
         public static final Codec<DispatchTest> CODEC = DISPATCH_ATTACHMENT.dispatchCodec(
-            map -> ResourceLocation.CODEC.flatXmap(rl -> map.containsKey(rl) ? DataResult.success(map.get(rl)) :
+            map -> Identifier.CODEC.flatXmap(rl -> map.containsKey(rl) ? DataResult.success(map.get(rl)) :
                 DataResult.error(() -> "Map missing key [" + rl + "]"), test -> DataResult.success(test.name)));
     }
 
@@ -71,7 +71,7 @@ public class AttachmentTests {
     void dispatchTest() {
         DynamicOps<JsonElement> ops = JsonOps.INSTANCE;
         DispatchTest test = new DispatchTest("Hello World!", CodextraConstants.rl("test"));
-        Map<ResourceLocation, DispatchTest> map = Map.of(test.name, test);
+        Map<Identifier, DispatchTest> map = Map.of(test.name, test);
 
         ops = DISPATCH_ATTACHMENT.push(ops, map);
 

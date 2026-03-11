@@ -30,10 +30,9 @@ plugins {
 }
 
 submodule {
-    setRefmaps("codextra")
     setupJavadoc()
 }
 
 kpublish {
-    createPublication("intermediary")
+    createPublication()
 }

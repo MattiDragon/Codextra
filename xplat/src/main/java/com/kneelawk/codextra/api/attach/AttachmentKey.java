@@ -46,7 +46,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import com.kneelawk.codextra.api.attach.codec.AttachingCodec;
 import com.kneelawk.codextra.api.attach.codec.AttachingMapCodec;
@@ -118,7 +118,7 @@ public class AttachmentKey<A> {
      * @param <A>  the type this attachment attaches.
      * @return the created attachment key.
      */
-    public static <A> AttachmentKey<A> of(ResourceLocation name) {
+    public static <A> AttachmentKey<A> of(Identifier name) {
         return of(name.toString());
     }
 

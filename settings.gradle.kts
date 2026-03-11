@@ -17,6 +17,7 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        mavenLocal()
     }
     plugins {
         val loom_version: String by settings
@@ -41,6 +42,6 @@ plugins {
 rootProject.name = "codextra"
 
 include(":xplat")
-include(":xplat-mojmap")
-include(":fabric", ":fabric:remapCheck")
-include(":neoforge")
+//include(":xplat-mojmap")
+include(":fabric"/*, ":fabric:remapCheck"*/)
+//include(":neoforge")
