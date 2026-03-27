@@ -16,6 +16,6 @@ logoFile = "assets/codextra/icon-128.png"
 [[dependencies.codextra]]
 modId = "neoforge"
 type = "REQUIRED"
-versionRange = "[20.6.40-beta,)"
+versionRange = "[26.1.0.5-beta,)"
 ordering = "NONE"
 side = "BOTH"
